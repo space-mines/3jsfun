@@ -4,19 +4,19 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 
 const scene = new THREE.Scene();
-// scene.backgroundColor = 0xffffff;
-// scene.fog = new THREE.Fog(0xffffff, 0.0025, 50);
-//scene.add(new THREE.AmbientLight(0x666666));
+scene.backgroundColor = 0xffffff;
+scene.fog = new THREE.Fog(0xffffff, 0.0025, 50);
+scene.add(new THREE.AmbientLight(0x666666));
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-// camera.position.x = -3;
-// camera.position.z = 8;
-// camera.position.y = 2;
+camera.position.x = -3;
+camera.position.z = 8;
+camera.position.y = 2;
 
 const renderer = new THREE.WebGLRenderer({antialias: true});
-// renderer.outputEncoding = THREE.sRGBEncoding;
-// renderer.shadowMap.enabled = true;
-// renderer.shadowMap.type = THREE.VSMShadowMap;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.VSMShadowMap;
 renderer.setSize( window.innerWidth, window.innerHeight );
 // renderer.setClearColor(0xffffff);
 document.body.appendChild( renderer.domElement );
@@ -26,10 +26,10 @@ const controls = new OrbitControls( camera, renderer.domElement );
 const loader = new GLTFLoader();
 
 // // add lights
-// scene.add(new THREE.AmbientLight(0x666666));
-// const dirLight = new THREE.DirectionalLight(0xaaaaaa);
-// dirLight.position.set(5, 12, 8);
-// dirLight.castShadow = true;
+scene.add(new THREE.AmbientLight(0x666666));
+const dirLight = new THREE.DirectionalLight(0xaaaaaa);
+dirLight.position.set(5, 12, 8);
+dirLight.castShadow = true;
 //
 // add meshes
 const cubeGeometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -39,7 +39,6 @@ const cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
 // cube.castShadow = true;
 scene.add( cube );
 
-camera.position.z = 5;
 //
 // const torusKnotGeometry = new THREE.TorusKnotGeometry(0.5, 0.2, 100, 100);
 // const torusKnotMat = new THREE.MeshStandardMaterial({
